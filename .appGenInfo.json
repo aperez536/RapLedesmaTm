@@ -1,0 +1,29 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Sep 17 2026 00:11:48 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://s4tstpp/sap/opu/odata4/sap/zui_confviaje_o4/srvd/sap/zsd_confviaje/0001/",
+    "appName": "reporte",
+    "appTitle": "Conformidad de Viaje",
+    "appDescription": "Reporte de conformidad de viaje - SAP TM",
+    "appNamespace": "fiori.tm.confviaje",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.30",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.32.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ConformidadViaje"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```",
+    "valueHelpDownloaded": true
+  }
+}

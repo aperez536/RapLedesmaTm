@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd.zsd_confviaje.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+            <EntityType Name="VH_ConductorType">
+                <Key>
+                    <PropertyRef Name="Conductor"/>
+                </Key>
+                <Property Name="Conductor" Type="Edm.String" Nullable="false" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="VH_TransportistaType">
+                <Key>
+                    <PropertyRef Name="Tspid"/>
+                </Key>
+                <Property Name="Tspid" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="NameOrg1" Type="Edm.String" Nullable="false" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="VH_ClaseDocumentoType">
+                <Key>
+                    <PropertyRef Name="DbKey"/>
+                </Key>
+                <Property Name="DbKey" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TorId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="TorCat" Type="Edm.String" Nullable="false" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="VH_PatenteType">
+                <Key>
+                    <PropertyRef Name="NumeroMatricula"/>
+                </Key>
+                <Property Name="NumeroMatricula" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="VH_CreadoPorType">
+                <Key>
+                    <PropertyRef Name="CreatedBy"/>
+                </Key>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="ConformidadViajeType">
+                <Key>
+                    <PropertyRef Name="TorId"/>
+                </Key>
+                <Property Name="TorId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DbKey" Type="Edm.Guid"/>
+                <Property Name="CreatedOn" Type="Edm.Decimal" Nullable="false" Precision="15"/>
+                <Property Name="TorType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Tspid" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="TransportistaNombre" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Consigneeid" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DestinoNombre" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="UbicacionOrigen" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DescripcionOrigen" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="OrigenCalle" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="OrigenCiudad" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="OrigenCodPostal" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="UbicacionDestino" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DescripcionDestino" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="DestinoCalle" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="DestinoCiudad" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="DestinoCodPostal" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Conductor" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="DistanciaTotal" Type="Edm.Decimal" Nullable="false" Precision="28" Scale="6"/>
+                <Property Name="MedioTransporte" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="RecursoVehiculo" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="NumeroMatricula" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="PesoBruto" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="UmPesoBruto" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="UtilizacionMaxima" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="2"/>
+                <Property Name="StatusCicloVida" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="StatusEjecucion" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="OrganizacionCompras" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="StatusCalcCst" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="EstadoFacturacion" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="ChangedOn" Type="Edm.Decimal" Nullable="false" Precision="15"/>
+                <Property Name="MotivoEvento" Type="Edm.String" Nullable="false" MaxLength="100"/>
+                <Property Name="FechaHoraEvento" Type="Edm.Decimal" Nullable="false" Precision="15"/>
+                <Property Name="CodigoEvento" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="FechaCalculo" Type="Edm.Decimal" Nullable="false" Precision="15"/>
+                <Property Name="FechaCalculoModifManual" Type="Edm.String" Nullable="false" MaxLength="1"/>
+            </EntityType>
+            <EntityContainer Name="Container">
+                <EntitySet Name="ConformidadViaje" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.ConformidadViajeType"/>
+                <EntitySet Name="VH_ClaseDocumento" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.VH_ClaseDocumentoType"/>
+                <EntitySet Name="VH_Conductor" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.VH_ConductorType"/>
+                <EntitySet Name="VH_CreadoPor" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.VH_CreadoPorType"/>
+                <EntitySet Name="VH_Patente" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.VH_PatenteType"/>
+                <EntitySet Name="VH_Transportista" EntityType="com.sap.gateway.srvd.zsd_confviaje.v0001.VH_TransportistaType"/>
+            </EntityContainer>
+            <Annotations Target="SAP__self.VH_ConductorType">
+                <Annotation Term="SAP__common.Label" String="VH Conductor"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VH_Conductor">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_TransportistaType/Tspid">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Interloc.comercial"/>
+                <Annotation Term="SAP__common.Heading" String="Interl.comercial"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Número interlocutor comercial"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_TransportistaType">
+                <Annotation Term="SAP__common.Label" String="VH Transportista"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VH_Transportista">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_ClaseDocumentoType/TorId">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Documento"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_ClaseDocumentoType/TorCat">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Tipo de documento"/>
+                <Annotation Term="SAP__common.Heading" String="Tipo de documento comercial"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tipo de documento comercial"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_ClaseDocumentoType">
+                <Annotation Term="SAP__common.Label" String="VH Clase de Documento"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VH_ClaseDocumento">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_PatenteType">
+                <Annotation Term="SAP__common.Label" String="VH Numero de Matricula"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VH_Patente">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_CreadoPorType/CreatedBy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Creado por"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_CreadoPorType">
+                <Annotation Term="SAP__common.Label" String="VH Creado por"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VH_CreadoPor">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/TorId">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Documento"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/TorType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_vh_tortype/0001;ps='srvd-zsd_confviaje-0001';va='com.sap.gateway.srvd.zsd_confviaje.v0001.et-zc_confviaje.tortype'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Clase de documento"/>
+                <Annotation Term="SAP__common.Heading" String="Clase de documento comercial"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Clase de documento comercial"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/Tspid">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_vh_tspid/0001;ps='srvd-zsd_confviaje-0001';va='com.sap.gateway.srvd.zsd_confviaje.v0001.et-zc_confviaje.tspid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Transportista"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/TransportistaNombre">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Nombre 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nombre 1 de organización"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/Consigneeid">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Destinatario"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DestinoNombre">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Nombre 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nombre 1 de organización"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DescripcionOrigen">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Nombre"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nombre 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/OrigenCalle">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Calle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/OrigenCiudad">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Población"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/OrigenCodPostal">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Código postal"/>
+                <Annotation Term="SAP__common.Heading" String="Cód.postal"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Código postal de la población"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DescripcionDestino">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Nombre"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nombre 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DestinoCalle">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Calle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DestinoCiudad">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Población"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DestinoCodPostal">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Código postal"/>
+                <Annotation Term="SAP__common.Heading" String="Cód.postal"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Código postal de la población"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/Conductor">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_vh_conductor/0001;ps='srvd-zsd_confviaje-0001';va='com.sap.gateway.srvd.zsd_confviaje.v0001.et-zc_confviaje.conductor'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Descrip.posición"/>
+                <Annotation Term="SAP__common.Heading" String="Descripción posición"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Descripción posición"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/MedioTransporte">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Medio de transporte"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/RecursoVehiculo">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Nº seguimiento"/>
+                <Annotation Term="SAP__common.Heading" String="Número de seguimiento"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Número de seguimiento"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/NumeroMatricula">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_vh_platenumber/0001;ps='srvd-zsd_confviaje-0001';va='com.sap.gateway.srvd.zsd_confviaje.v0001.et-zc_confviaje.numeromatricula'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Número de matrícula"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/UmPesoBruto">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="UM peso bruto"/>
+                <Annotation Term="SAP__common.Heading" String="Unidad de medida de peso bruto"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Unidad de medida de peso bruto"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/StatusCicloVida">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Status ciclo vida"/>
+                <Annotation Term="SAP__common.Heading" String="Status del ciclo de vida"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Status del ciclo de vida"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/StatusEjecucion">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Status de ejecución"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/OrganizacionCompras">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Organización compras"/>
+                <Annotation Term="SAP__common.Heading" String="Organización de compras"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Organización de compras"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/StatusCalcCst">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/EstadoFacturacion">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/CreatedBy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_vh_createdby/0001;ps='srvd-zsd_confviaje-0001';va='com.sap.gateway.srvd.zsd_confviaje.v0001.et-zc_confviaje.createdby'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Creado por"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/ChangedBy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Modificados por"/>
+                <Annotation Term="SAP__common.Heading" String="Modif.por"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/MotivoEvento">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Motivo de evento"/>
+                <Annotation Term="SAP__common.Heading" String="Texto de motivo de evento"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Motivo de un evento para una actividad de transporte"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/FechaHoraEvento">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Fecha real evento"/>
+                <Annotation Term="SAP__common.Heading" String="Fecha real del evento"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Fecha real del evento"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/CodigoEvento">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Evento"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Evento ocurrido durante actividad de transporte"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/FechaCalculo">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/FechaCalculoModifManual">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType">
+                <Annotation Term="SAP__common.Label" String="Conformidad de Viaje"/>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Conformidad de Viaje"/>
+                        <PropertyValue Property="TypeNamePlural" String="Conformidad de Viaje"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedOn"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TorId"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TorType"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Tspid"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TransportistaNombre"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DestinoNombre"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DescripcionOrigen"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OrigenCalle"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OrigenCiudad"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DescripcionDestino"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DestinoCalle"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="DestinoCiudad"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Conductor"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="NumeroMatricula"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="PesoBruto"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OrganizacionCompras"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedBy"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="CreatedOn"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>CreatedOn</PropertyPath>
+                        <PropertyPath>TorType</PropertyPath>
+                        <PropertyPath>Tspid</PropertyPath>
+                        <PropertyPath>Conductor</PropertyPath>
+                        <PropertyPath>NumeroMatricula</PropertyPath>
+                        <PropertyPath>CreatedBy</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ConformidadViaje">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreatedOn"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>application/json</String>
+                        <String>application/pdf</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DbKey">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="NodeID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_ConductorType/Conductor">
+                <Annotation Term="SAP__common.Label" String="Descrip.posición"/>
+                <Annotation Term="SAP__common.Heading" String="Descripción posición"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Descripción posición"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_TransportistaType/NameOrg1">
+                <Annotation Term="SAP__common.Label" String="Nombre 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nombre 1 de organización"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_ClaseDocumentoType/DbKey">
+                <Annotation Term="SAP__common.Label" String="NodeID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_PatenteType/NumeroMatricula">
+                <Annotation Term="SAP__common.Label" String="Número de matrícula"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/UbicacionOrigen">
+                <Annotation Term="SAP__common.Label" String="Ubicación de origen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/UbicacionDestino">
+                <Annotation Term="SAP__common.Label" String="Ubicación de destino"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/DistanciaTotal">
+                <Annotation Term="SAP__common.Label" String="Distancia total"/>
+                <Annotation Term="SAP__common.Heading" String="Distancia total en km"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Distancia total en km"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ConformidadViajeType/UtilizacionMaxima">
+                <Annotation Term="SAP__common.Label" String="Utilización máxima"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
