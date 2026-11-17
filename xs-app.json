@@ -7,6 +7,7 @@
       "target": "/sap/$1",
       "destination": "S4_BACKEND_CC",
       "authenticationType": "xsuaa",
+      "scope": "$XSAPPNAME.ZTM_CONFVIAJE_VISU",
       "csrfProtection": false
     },
     {

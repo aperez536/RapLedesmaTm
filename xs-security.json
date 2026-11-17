@@ -1,6 +1,30 @@
 {
-  "description": "Security profile of called application",
-  "scopes": [],
+  "xsappname": "fioritmconfviajereporte",
+  "tenant-mode": "dedicated",
+  "description": "Conformidad de Viaje - Configuracion de seguridad",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.ZTM_CONFVIAJE_VISU",
+      "description": "Visualizador: acceso de lectura a Conformidad de Viaje"
+    }
+  ],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [
+    {
+      "name": "ZTM_CONFVIAJE_VISU",
+      "description": "Perfil Visualizador TM - Conformidad de Viaje",
+      "scope-references": [
+        "$XSAPPNAME.ZTM_CONFVIAJE_VISU"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ZTM_CONFVIAJE_VISU",
+      "description": "Perfil Visualizador TM - Conformidad de Viaje",
+      "role-template-references": [
+        "$XSAPPNAME.ZTM_CONFVIAJE_VISU"
+      ]
+    }
+  ]
 }
