@@ -25,8 +25,33 @@ sap.ui.define([
 
     override: {
       onInit: function () {
+        this._hideAdaptFiltersButton();
         this._attachTotalsListener();
+      },
+
+      onAfterRendering: function () {
+        // Por si la barra de filtros no existía todavía en onInit
+        this._hideAdaptFiltersButton();
       }
+    },
+
+    // ============================================================
+    // BARRA DE FILTROS
+    // ============================================================
+
+    /**
+     * Oculta el botón "Adaptar filtros". FE 1.120 lo fija en true en la
+     * plantilla del List Report y no tiene opción en el manifest, así que se
+     * usa la propiedad pública showAdaptFiltersButton del sap.ui.mdc.FilterBar.
+     */
+    _hideAdaptFiltersButton: function () {
+      this.base.getView().findAggregatedObjects(true, function (oControl) {
+        return oControl.isA("sap.ui.mdc.FilterBar");
+      }).forEach(function (oFilterBar) {
+        if (oFilterBar.getShowAdaptFiltersButton()) {
+          oFilterBar.setShowAdaptFiltersButton(false);
+        }
+      });
     },
 
     // ============================================================
@@ -52,7 +77,8 @@ sap.ui.define([
 
     _calculateTotals: function () {
       var oTable = this._findTable();
-      if (!oTable || !(oTable.getBinding("rows") || oTable.getBinding("items"))) {
+      var oBinding = oTable && (oTable.getBinding("rows") || oTable.getBinding("items"));
+      if (!oBinding || !oBinding.getDownloadUrl) {
         return; // Todavía no se ejecutó la búsqueda
       }
 
@@ -273,7 +299,7 @@ sap.ui.define([
     _requestBaseQuery: function () {
       var oTable = this._findTable();
       var oBinding = oTable && (oTable.getBinding("rows") || oTable.getBinding("items"));
-      if (!oBinding) {
+      if (!oBinding || !oBinding.getDownloadUrl) {
         return Promise.reject(new Error("No se pudo obtener el binding de la tabla."));
       }
 
@@ -380,12 +406,27 @@ sap.ui.define([
     // HELPERS
     // ============================================================
 
+    /**
+     * Devuelve la tabla interna del reporte. En la vista hay otras tablas
+     * (p. ej. las de las ayudas de búsqueda del filtro), así que se elige la
+     * que tiene el binding OData V4 de /ConformidadViaje y, si todavía no
+     * tiene binding (antes de la primera búsqueda), la que está dentro del
+     * sap.ui.mdc.Table de FE.
+     */
     _findTable: function () {
-      var oView = this.base.getView();
-      var aTables = oView.findAggregatedObjects(true, function (oControl) {
+      var aTables = this.base.getView().findAggregatedObjects(true, function (oControl) {
         return oControl.isA("sap.ui.table.Table") || oControl.isA("sap.m.Table");
       });
-      return aTables && aTables.length > 0 ? aTables[0] : null;
+
+      var oTable = aTables.filter(function (oCandidate) {
+        var oBinding = oCandidate.getBinding("rows") || oCandidate.getBinding("items");
+        return oBinding && oBinding.getDownloadUrl && oBinding.getPath() === "/ConformidadViaje";
+      })[0];
+
+      return oTable || aTables.filter(function (oCandidate) {
+        var oParent = oCandidate.getParent();
+        return oParent && oParent.isA("sap.ui.mdc.Table");
+      })[0] || null;
     },
 
     _getAllFieldNames: function () {
@@ -394,6 +435,7 @@ sap.ui.define([
         "TransportistaNombre", "Consigneeid", "DestinoNombre",
         "UbicacionOrigen", "DescripcionOrigen", "OrigenCalle", "OrigenCiudad", "OrigenCodPostal",
         "UbicacionDestino", "DescripcionDestino", "DestinoCalle", "DestinoCiudad", "DestinoCodPostal",
+        "primerActividadFecha", "primerActividadHora",
         "Conductor", "DistanciaTotal", "DistanciaUnidad", "MedioTransporte",
         "RecursoVehiculo", "NumeroMatricula", "PesoBruto", "UmPesoBruto", "UtilizacionMaxima",
         "StatusCicloVida", "StatusCicloVidaText", "StatusEjecucion", "StatusEjecucionText",
@@ -425,6 +467,8 @@ sap.ui.define([
         { label: "Calle destino", property: "DestinoCalle", type: EdmType.String },
         { label: "Ciudad destino", property: "DestinoCiudad", type: EdmType.String },
         { label: "Cod. postal destino", property: "DestinoCodPostal", type: EdmType.String },
+        { label: "Fecha primera actividad", property: "primerActividadFecha", type: EdmType.Date },
+        { label: "Hora primera actividad", property: "primerActividadHora", type: EdmType.String },
         { label: "Conductor", property: "Conductor", type: EdmType.String },
         { label: "Distancia total", property: "DistanciaTotal", type: EdmType.Number },
         { label: "Unidad distancia", property: "DistanciaUnidad", type: EdmType.String },
