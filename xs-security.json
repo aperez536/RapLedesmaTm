@@ -1,5 +1,5 @@
 {
-  "xsappname": "fioritmconfviajereporte",
+  "xsappname": "fiori-tm-confviaje",
   "tenant-mode": "dedicated",
   "description": "Conformidad de Viaje - Configuracion de seguridad",
   "scopes": [

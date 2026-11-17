@@ -6,7 +6,7 @@ sap.ui.define(
         var REQUIRED_ROLE = "ZTM_CONFVIAJE_VISU";
         var OVERLAY_ID = "confViajeAuthOverlay";
 
-        return Component.extend("fiori.tm.confviaje.reporte.Component", {
+        return Component.extend("arledesmafioritm.confviajereporte.Component", {
             metadata: {
                 manifest: "json"
             },

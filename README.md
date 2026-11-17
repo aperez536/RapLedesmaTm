@@ -10,7 +10,7 @@
 |**Service URL**<br>http://s4tstpp/sap/opu/odata4/sap/zui_confviaje_o4/srvd/sap/zsd_confviaje/0001/|
 |**Module Name**<br>reporte|
 |**Application Title**<br>Conformidad de Viaje|
-|**Namespace**<br>fiori.tm.confviaje|
+|**Namespace**<br>arledesmafioritm|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.120.30|
 |**Enable TypeScript**<br>False|

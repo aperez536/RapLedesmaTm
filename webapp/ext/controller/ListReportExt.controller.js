@@ -21,7 +21,7 @@ sap.ui.define([
   // excede la precisión declarada (ej. PesoBruto del documento 6100001172)
   var DECIMAL_FIELDS = ["PesoBruto", "DistanciaTotal", "UtilizacionMaxima"];
 
-  return ControllerExtension.extend("fiori.tm.confviaje.reporte.ext.controller.ListReportExt", {
+  return ControllerExtension.extend("arledesmafioritm.confviajereporte.ext.controller.ListReportExt", {
 
     override: {
       onInit: function () {

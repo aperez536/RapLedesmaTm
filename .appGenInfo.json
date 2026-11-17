@@ -8,7 +8,7 @@
     "appName": "reporte",
     "appTitle": "Conformidad de Viaje",
     "appDescription": "Reporte de conformidad de viaje - SAP TM",
-    "appNamespace": "fiori.tm.confviaje",
+    "appNamespace": "arledesmafioritm",
     "ui5Theme": "sap_horizon",
     "ui5Version": "1.120.30",
     "enableEslint": true,

@@ -32,7 +32,7 @@ sap.ui.define(['sap/fe/test/ObjectPage', 'sap/ui/test/actions/Press'], function(
 
     return new ObjectPage(
         {
-            appId: 'fiori.tm.confviaje.reporte',
+            appId: 'arledesmafioritm.confviajereporte',
             componentId: 'ConformidadViajeObjectPage',
             contextPath: '/ConformidadViaje'
         },

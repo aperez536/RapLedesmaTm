@@ -25,7 +25,7 @@ sap.ui.define(['sap/fe/test/ListReport'], function(ListReport) {
 
     return new ListReport(
         {
-            appId: 'fiori.tm.confviaje.reporte',
+            appId: 'arledesmafioritm.confviajereporte',
             componentId: 'ConformidadViajeList',
             contextPath: '/ConformidadViaje'
         },
